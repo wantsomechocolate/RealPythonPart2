@@ -52,7 +52,6 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
-# Real python course files?
 RealPythonPart2.pdf
 course_materials/
 
