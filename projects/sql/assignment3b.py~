@@ -1,0 +1,38 @@
+#assignment3b.py
+menu={
+        "Sum":"SELECT sum(num) FROM randnums",
+        "Ave":"SELECT ave(num) FROM randums",
+        "Quit":0,
+    
+        }
+
+commands=["Sum","Ave","Quit"]
+
+
+while True:
+
+    for i in range(len(commands)):
+        print (str(i+1)+".) "+commands[i])
+
+    usrinput=input("Make a selection: ")
+
+    try:
+        ans=commands[int(usrinput)]
+        print ("Command found using integer input\n")
+
+    except IndexError:
+        print("Option doesn't exist")
+
+    except ValueError:
+        print("Option could not be converted to an integer")
+        print("Trying to find text in dict")
+        try:
+            ans=menu[usrinput]
+            print ("Command found using text input\n")
+        except KeyError:
+            print("Could not find")
+
+    if ans == "Quit" or usrinput == len(commands):
+        break
+    else:
+        print ("Choice was: "+menu[ans])
