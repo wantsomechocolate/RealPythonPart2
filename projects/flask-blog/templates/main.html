@@ -18,6 +18,10 @@
 	{% for p in posts %}
 		<strong>Title:</strong> {{ p.title }} <br/>
 		<strong>Post:</strong> {{ p.post }} <br/>
+		<form action="{{ url_for('delete', post_title=p.title) }}" method='get' class='delete'>
+			<input class='button' type='submit' value = "Delete Post">
+		</form>
+
 		<br/>
 	{% endfor %}
 {% endblock %}

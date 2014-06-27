@@ -1,21 +1,5 @@
 
 import sqlite3
-
-##with sqlite3.connect('blog.db') as connection:
-##
-##    c = connection.cursor()
-##
-##    c.execute("""CREATE TABLE IF NOT EXISTS posts
-##    (title TEXT, post TEXT)
-##    """)
-##
-##    c.execute('INSERT INTO posts VALUES("Good", "I\'m good.")')
-##
-##    c.execute('INSERT INTO posts VALUES("Well", "I\'m well.")')
-##
-##    c.execute('INSERT INTO posts VALUES("Excellent", "I\'m excellent.")')
-##
-##    c.execute('INSERT INTO posts VALUES("Good", "I\'m okay.")')
     
 from flask import Flask, render_template, request, session, \
      flash, redirect, url_for, g
@@ -30,14 +14,15 @@ USERNAME = 'admin'
 PASSWORD = 'admin'
 SECRET_KEY = 'hard_to_guess'
 
-app = Flask(__name__)
 
+app = Flask(__name__)
 
 #pulls in app configuration by looking for UPPERCASE variables
 app.config.from_object(__name__)
 
 def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
+
 
 def login_required(test):
     @wraps(test)
@@ -48,6 +33,7 @@ def login_required(test):
             flash("You need to login first")
             return redirect(url_for('login'))
     return wrap
+
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -67,6 +53,7 @@ def logout():
     flash('You were logged out')
     return redirect(url_for('login'))
 
+
 @app.route('/main')
 @login_required
 def main():
@@ -76,6 +63,7 @@ def main():
     posts = [dict(title=row[0], post=row[1]) for row in cur.fetchall()]
     g.db.close()
     return render_template('main.html', posts=posts)
+
 
 @app.route('/add', methods=['POST'])
 @login_required
@@ -95,15 +83,17 @@ def add():
         return redirect(url_for('main'))
 
 
-##@app.route('/delete')
-##@login_required
-##def delete():
-##    g.db = connect_db()
-##    g.db.execute('
+@app.route('/delete/<post_title>/')
+@login_required
+def delete(post_title):
+    g.db = connect_db()
+    cur = g.db.execute('delete from posts where title ="'+str(post_title)+'"')
+    g.db.commit()
+    g.db.close()
+    flash('The post was deleted')
+    return redirect(url_for('main'))
     
-        
-
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5001))
+    port = int(os.environ.get('PORT', 5000))
     app.run(host='127.0.0.1', port = port, debug=True)
