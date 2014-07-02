@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+{% block content %}
+	<h1>Welcome to FlaskTaskr.</h1>
+	<h3>Please register to access the task list.</h3>
+		<form method="POST" action="">
+			<p><span class='register_text_box'>{{ form.name.label }}:</span> {{ form.name }} &nbsp;&nbsp; <span class='register_text_box'>{{ form.password.label }}:</span> {{ form.password }} </p>
+			<p><span class='register_text_box'>{{ form.email.label }}:</span> {{form.email }} &nbsp;&nbsp; <span class='register_text_box'>{{ form.confirm.label }}:</span>{{ form.confirm }} </p>
+			
+			<button class="btn btn-lg btn-primary" type='submit'>Register</button>
+			
+			<br>
+			<br>
+			
+			<p><em>Aready Registered?</em> Click <a href="/">here</a> to login.</p>
+		</form>
+{% endblock %}

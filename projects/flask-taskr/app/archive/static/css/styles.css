@@ -1,4 +1,5 @@
 body {
+	padding:60px 0px;
 	font-family: sans-serif;
 	background: #eee;
 }
@@ -127,7 +128,36 @@ h2 {
 	position:relative;
 }
 
-#priority_dropdown {
+.flash {
+	background: #CEE5F5;
+	padding: 0.5em;
+}
+
+.error {
+	background: #F0D6D6;
+	padding: 0.5em;
+}
+
+.table {
+	background-color:white;
+}
+
+thead {
+	background-color: black;
+	color: white;
+}
+
+.register_text_box_r {
+	display:inline-block;
+	width:150px;
+}
+
+.register_text_box_l {
+	display:inline-block;
+	width:100px;
+}
+
+/*#priority_dropdown {
 	width:180px;
 }
 
@@ -140,10 +170,12 @@ h2 {
 }
 
 #tasks_header h1{
-	width:100%;
+	width:90%;
 }
 
 #tasks_header a{
 	float:right;
 }
+*/
+
 

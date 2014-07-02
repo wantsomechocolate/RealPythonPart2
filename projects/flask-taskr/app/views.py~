@@ -35,6 +35,7 @@ def flash_errors(form):
 def logout():
     session.pop('logged_in', None)
     session.pop('user_id', None)
+	session.pop('user_name', None)
     flash('You are logged out. Bye. :(')
     return redirect(url_for('login'))
 
@@ -52,6 +53,7 @@ def login():
         else:
             session['logged_in'] = True
             session['user_id'] = u.id
+			session['user_name'] = u.username
             flash('You are logged in. Go Crazy.')
             return redirect(url_for('tasks'))
     return render_template('login.html',form=LoginForm(request.form),error=None)

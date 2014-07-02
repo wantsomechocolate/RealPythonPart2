@@ -1,0 +1,9 @@
+{% extends 'template.html' %}
+{% block content %}
+
+	<h1>Something's wrong!</h1>
+	<p>You better just go back to the login page before you
+			ruin everything</p>
+	<p><a href="{{ url_for('users.login') }}">Back</a></p>
+
+{% endblock %}
