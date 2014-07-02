@@ -1,6 +1,6 @@
 # models.py
 
-from app import db
+from views import db
 
 class FTasks(db.Model):
 

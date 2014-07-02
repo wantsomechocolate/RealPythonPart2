@@ -11,7 +11,7 @@ if not app.debug:
     import os
     import logging
 
-    from logging import Formatter, FileHandler
+    from loggin import Formatter, FileHandler
     from config import basedir
 
     file_handler = FileHandler(os.path.join(basedir, 'error.log'))

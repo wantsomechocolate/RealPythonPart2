@@ -51,7 +51,7 @@ def complete(task_id):
     return redirect(url_for('.tasks'))
 
 
-@mod.route('/incomplete/<int:task_id>/')
+@app.route('/incomplete/<int:task_id>/')
 @login_required
 def incomplete(task_id):
     new_id = task_id
@@ -62,7 +62,7 @@ def incomplete(task_id):
 
 
 #delete tasks:
-@mod.route('/delete/<int:task_id>/')#,
+@app.route('/delete/<int:task_id>/')#,
 @login_required
 def delete_entry(task_id):
     new_id=task_id

@@ -3,7 +3,7 @@
 
 	<h1>Welcome to FlaskTaskr</h1>
 	<!--<h3>Please login to access your task list</h3>-->
-	<form class ='form-signin' role='form' method='POST' action=''>
+	<form class ='form-signin' role='form' method='POST' action='/'>
 		
 		<div class='lead'>Please sign in to access your task list</div>
 
