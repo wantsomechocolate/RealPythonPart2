@@ -5,7 +5,7 @@ import unittest
 
 #from views import app, db
 from app import app, db
-from models import User
+from app.models import User
 from config import basedir
 
 TEST_DB = 'test.db'
@@ -35,8 +35,8 @@ class Users(unittest.TestCase):
         db.session.commit()
         test = db.session.query(User).all()
         for t in test:
-            t.name
-        assert t.name == 'mherman'
+            #t.name
+            assert t.name == 'mherman'
 
     
     

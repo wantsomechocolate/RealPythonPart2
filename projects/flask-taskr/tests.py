@@ -6,7 +6,9 @@ import unittest
 #from views import app, db
 from app import app, db
 from app.models import User
+from app.models import FTasks
 from config import basedir
+import datetime
 
 TEST_DB = 'test.db'
 
@@ -35,8 +37,29 @@ class Users(unittest.TestCase):
         db.session.commit()
         test = db.session.query(User).all()
         for t in test:
-            t.name
-        assert t.name == 'mherman'
+            #t.name
+            assert t.name == 'mherman'
+
+    def test_existing_user_can_login(self):
+        new_user=User('mherman', 'micheal@mherman.org', 'michealhearm')
+        db.session.add(new_user)
+        db.session.commit()
+        u=User.query.filter_by(name='mherman', password='michealhearm').first()
+        assert u.name=='mherman'
+
+    def test_add_new_task(self):
+        new_task = FTasks(
+                    'Task Name',
+                    datetime.date(2012,6,5),
+                    8,
+                    datetime.date(2012,6,5),
+                    '1',
+                    'mherman'
+                    )
+        db.session.add(new_task)
+        db.session.commit()
+        
+        
 
     
     

@@ -32,7 +32,7 @@ def login():
 
     try:
         if session['logged_in']== True:
-            return redirect(url_for('tasks'))
+            return redirect(url_for('tasks.tasks'))
     except KeyError:
     
         if request.method == 'POST':
