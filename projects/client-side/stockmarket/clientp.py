@@ -13,6 +13,5 @@ while(True):
 	with open('stocks.csv','a') as code:
 		code.write(data.content)
 	#i+=1
-	print "hey"
 
 	time.sleep(60)
